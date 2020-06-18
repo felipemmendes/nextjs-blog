@@ -33,6 +33,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/no-danger": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-one-expression-per-line": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
