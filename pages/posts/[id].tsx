@@ -1,3 +1,5 @@
+import React from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import Layout from '../../components/layout';
@@ -6,7 +8,15 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 
 import utilStyles from '../../styles/utils.module.css';
 
-export default function Post({ postData }) {
+interface PostProps {
+  postData: {
+    title: string;
+    date: string;
+    contentHtml: string;
+  };
+}
+
+const Post: React.FC<PostProps> = ({ postData }) => {
   return (
     <Layout>
       <Head>
@@ -20,10 +30,10 @@ export default function Post({ postData }) {
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
-  )
+  );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds();
 
   return {
@@ -32,12 +42,14 @@ export async function getStaticPaths() {
   };
 };
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postData = await getPostData(params.id as string);
 
   return {
     props: {
-      postData
+      postData,
     },
   };
 };
+
+export default Post;
