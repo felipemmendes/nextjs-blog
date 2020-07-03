@@ -1,7 +1,7 @@
 # Next.js Blog
 This blog was made in the [learning course from Next.js docs](https://nextjs.org/learn/basics/create-nextjs-app).
 
-## What I'v learned
+## What I've learned
 
 * Creating a Next.js project
 * Using Next.js' Router for client-side navigation
